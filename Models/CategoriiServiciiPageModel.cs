@@ -4,20 +4,20 @@ namespace Proiect.Models
 {
     public class CategoriiServiciiPageModel : PageModel
     {
-        public List<AlegereCategorie> AlegereCategorieList;
-        public void PopulateAlegereCategorie(ProiectContext context, Serviciu serviciu)
+        public List<AssignedCategoryData> AssignedCategoryDataList;
+        public void PopulateAssignedCategoryData(ProiectContext context, Serviciu serviciu)
         {
             var allCategories = context.Categorie;
             var serviciuCategorii = new HashSet<int>(
             serviciu.CategoriiServicii.Select(c => c.CategorieID)); //
-            AlegereCategorieList = new List<AlegereCategorie>();
+            AssignedCategoryDataList = new List<AssignedCategoryData>();
             foreach (var cat in allCategories)
             {
-                AlegereCategorieList.Add(new AlegereCategorie
+                AssignedCategoryDataList.Add(new AssignedCategoryData
                 {
                     CategorieID = cat.ID,
                     Nume = cat.NumeCategorie,
-                    Alege = serviciuCategorii.Contains(cat.ID)
+                    Assigned = serviciuCategorii.Contains(cat.ID)
                 });
             }
         }

@@ -15,6 +15,7 @@ namespace Proiect.Pages.Servicii
     public class EditModel : CategoriiServiciiPageModel
     {
         private readonly Proiect.Data.ProiectContext _context;
+        private Serviciu serviciuToUpdate;
 
         public EditModel(Proiect.Data.ProiectContext context)
         {
@@ -22,7 +23,7 @@ namespace Proiect.Pages.Servicii
         }
 
         [BindProperty]
-        public Serviciu Serviciu { get; set; } = default!;
+        public Serviciu Serviciu { get; set; } 
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -44,8 +45,14 @@ namespace Proiect.Pages.Servicii
                 return NotFound();
             }
 
-            PopulateAlegereCategorie(_context, Serviciu);
-            Serviciu = serviciu;
+            PopulateAssignedCategoryData(_context, Serviciu);
+
+            var personalList = _context.Personal.Select(x => new
+            {
+                x.ID,
+                FulName = x.Nume + " " + x.Prenume
+            });
+            
             ViewData["MarcaID"] = new SelectList(_context.Set<Marca>(), "ID", "NumeMarca");
             return Page();
             ViewData["PersonalID"] = new SelectList(_context.Set<Personal>(), "ID", "Personal");
@@ -82,9 +89,9 @@ namespace Proiect.Pages.Servicii
             }
            
             UpdateCategoriiServicii(_context, selectedCategorii, serviciuToUpdate);
-            PopulateAlegereCategorie(_context, serviciuToUpdate);
+            PopulateAssignedCategoryData(_context, serviciuToUpdate);
             return Page();
         }
     }
 }
-}
+

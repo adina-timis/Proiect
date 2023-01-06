@@ -7,7 +7,7 @@
 
 <h1>Create</h1>
 
-<h4>Serviciu</h4>
+<h4>Programare</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -39,6 +39,33 @@
                 </select>
                 <span asp-validation-for="Serviciu.MarcaID" class="text-danger"></span>
             </div>
+            <div class="form-group">
+ <div class="table">
+ <table>
+ <tr>
+ @{
+ int cnt = 0;
+ foreach (var cat in Model.AssignedCategoryDataList)
+ {
+ if (cnt++ % 3 == 0)
+{
+@:</tr><tr>
+ }
+ @:<td>
+ <input type="checkbox"
+ name="selectedCategorii"
+ value="@cat.CategorieID"
+ @(Html.Raw(cat.Alege ?
+"checked=\"checked\"" : "")) />
+ @cat.CategorieID @: @cat.Nume
+ @:</td>
+ }
+ @:</tr>
+ }
+ </table>
+ </div>
+ </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
