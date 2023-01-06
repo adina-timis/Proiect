@@ -17,5 +17,7 @@ namespace Proiect.Data
         public DbSet<Proiect.Models.Serviciu> Serviciu { get; set; } = default!;
 
         public DbSet<Proiect.Models.Marca> Marca { get; set; }
+
+        public DbSet<Proiect.Models.Categorie> Categorie { get; set; }
     }
 }

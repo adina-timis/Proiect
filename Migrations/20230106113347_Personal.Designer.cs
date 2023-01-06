@@ -12,7 +12,7 @@ using Proiect.Data;
 namespace Proiect.Migrations
 {
     [DbContext(typeof(ProiectContext))]
-    [Migration("20230106105511_Personal")]
+    [Migration("20230106113347_Personal")]
     partial class Personal
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,6 +41,27 @@ namespace Proiect.Migrations
                     b.ToTable("Marca");
                 });
 
+            modelBuilder.Entity("Proiect.Models.Personal", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
+
+                    b.Property<string>("Nume")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Prenume")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Personal");
+                });
+
             modelBuilder.Entity("Proiect.Models.Serviciu", b =>
                 {
                     b.Property<int>("ID")
@@ -55,11 +76,11 @@ namespace Proiect.Migrations
                     b.Property<int?>("MarcaID")
                         .HasColumnType("int");
 
+                    b.Property<int?>("PersonalID")
+                        .HasColumnType("int");
+
                     b.Property<decimal>("Pret")
                         .HasColumnType("decimal(6,2)");
-
-                    b.Property<int?>("ServiciuID")
-                        .HasColumnType("int");
 
                     b.Property<string>("Tip")
                         .IsRequired()
@@ -69,7 +90,7 @@ namespace Proiect.Migrations
 
                     b.HasIndex("MarcaID");
 
-                    b.HasIndex("ServiciuID");
+                    b.HasIndex("PersonalID");
 
                     b.ToTable("Serviciu");
                 });
@@ -80,11 +101,13 @@ namespace Proiect.Migrations
                         .WithMany("Servicii")
                         .HasForeignKey("MarcaID");
 
-                    b.HasOne("Proiect.Models.Serviciu", null)
-                        .WithMany("Personal")
-                        .HasForeignKey("ServiciuID");
+                    b.HasOne("Proiect.Models.Personal", "Personal")
+                        .WithMany("Servicii")
+                        .HasForeignKey("PersonalID");
 
                     b.Navigation("Marca");
+
+                    b.Navigation("Personal");
                 });
 
             modelBuilder.Entity("Proiect.Models.Marca", b =>
@@ -92,9 +115,9 @@ namespace Proiect.Migrations
                     b.Navigation("Servicii");
                 });
 
-            modelBuilder.Entity("Proiect.Models.Serviciu", b =>
+            modelBuilder.Entity("Proiect.Models.Personal", b =>
                 {
-                    b.Navigation("Personal");
+                    b.Navigation("Servicii");
                 });
 #pragma warning restore 612, 618
         }

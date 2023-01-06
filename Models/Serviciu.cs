@@ -21,6 +21,8 @@ namespace Proiect.Models
         public int? MarcaID { get; set; }
         public Marca? Marca { get; set; }
 
-        public ICollection<Serviciu>? Personal { get; set; }
+       public int? PersonalID { get; set; }
+        public Personal? Personal { get; set; }
+        public ICollection<CategorieServiciu>? CategoriiServicii { get; set; }
     }
 }
