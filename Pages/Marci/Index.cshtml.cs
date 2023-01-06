@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Proiect.Data;
 using Proiect.Models;
 
-namespace Proiect.Pages.Servicii
+namespace Proiect.Pages.Marci
 {
     public class IndexModel : PageModel
     {
@@ -19,15 +19,13 @@ namespace Proiect.Pages.Servicii
             _context = context;
         }
 
-        public IList<Serviciu> Serviciu { get;set; } = default!;
+        public IList<Marca> Marca { get;set; } = default!;
 
         public async Task OnGetAsync()
         {
-            if (_context.Serviciu != null)
+            if (_context.Marca != null)
             {
-                Serviciu = await _context.Serviciu
-                    .Include(b => b.Marca)
-                    .ToListAsync();
+                Marca = await _context.Marca.ToListAsync();
             }
         }
     }

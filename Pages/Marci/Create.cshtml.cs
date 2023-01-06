@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -9,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Proiect.Data;
 using Proiect.Models;
 
-namespace Proiect.Pages.Servicii
+namespace Proiect.Pages.Marci
 {
     public class CreateModel : PageModel
     {
@@ -22,12 +21,11 @@ namespace Proiect.Pages.Servicii
 
         public IActionResult OnGet()
         {
-            ViewData["MarcaID"] = new SelectList(_context.Set<Marca>(), "ID", "NumeMarca");
             return Page();
         }
 
         [BindProperty]
-        public Serviciu Serviciu { get; set; }
+        public Marca Marca { get; set; }
         
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
@@ -38,7 +36,7 @@ namespace Proiect.Pages.Servicii
                 return Page();
             }
 
-            _context.Serviciu.Add(Serviciu);
+            _context.Marca.Add(Marca);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");

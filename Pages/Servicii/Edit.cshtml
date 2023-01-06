@@ -20,14 +20,25 @@
                 <span asp-validation-for="Serviciu.Tip" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Serviciu.Angajat" class="control-label"></label>
-                <input asp-for="Serviciu.Angajat" class="form-control" />
-                <span asp-validation-for="Serviciu.Angajat" class="text-danger"></span>
+                <label asp-for="Serviciu.Personal" class="control-label"></label>
+                <input asp-for="Serviciu.Personal" class="form-control" />
+                <span asp-validation-for="Serviciu.Personal" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Serviciu.Pret" class="control-label"></label>
                 <input asp-for="Serviciu.Pret" class="form-control" />
                 <span asp-validation-for="Serviciu.Pret" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Serviciu.DataProgramarii" class="control-label"></label>
+                <input asp-for="Serviciu.DataProgramarii" class="form-control" />
+                <span asp-validation-for="Serviciu.DataProgramarii" class="textdanger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Serviciu.MarcaID" class="control-label">Nume Marca</label>
+                <select asp-for="Serviciu.MarcaID" class="form-control" asp-items="ViewBag.MarcaID">
+                </select>
+                <span asp-validation-for="Serviciu.MarcaID" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Proiect.Data;
 
@@ -11,9 +12,10 @@ using Proiect.Data;
 namespace Proiect.Migrations
 {
     [DbContext(typeof(ProiectContext))]
-    partial class ProiectContextModelSnapshot : ModelSnapshot
+    [Migration("20230106103426_Marca")]
+    partial class Marca
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,6 +49,10 @@ namespace Proiect.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"), 1L, 1);
 
+                    b.Property<string>("Angajat")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("DataProgramarii")
                         .HasColumnType("datetime2");
 
@@ -56,9 +62,6 @@ namespace Proiect.Migrations
                     b.Property<decimal>("Pret")
                         .HasColumnType("decimal(6,2)");
 
-                    b.Property<int?>("ServiciuID")
-                        .HasColumnType("int");
-
                     b.Property<string>("Tip")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -66,8 +69,6 @@ namespace Proiect.Migrations
                     b.HasKey("ID");
 
                     b.HasIndex("MarcaID");
-
-                    b.HasIndex("ServiciuID");
 
                     b.ToTable("Serviciu");
                 });
@@ -78,21 +79,12 @@ namespace Proiect.Migrations
                         .WithMany("Servicii")
                         .HasForeignKey("MarcaID");
 
-                    b.HasOne("Proiect.Models.Serviciu", null)
-                        .WithMany("Personal")
-                        .HasForeignKey("ServiciuID");
-
                     b.Navigation("Marca");
                 });
 
             modelBuilder.Entity("Proiect.Models.Marca", b =>
                 {
                     b.Navigation("Servicii");
-                });
-
-            modelBuilder.Entity("Proiect.Models.Serviciu", b =>
-                {
-                    b.Navigation("Personal");
                 });
 #pragma warning restore 612, 618
         }

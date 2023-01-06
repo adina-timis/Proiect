@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Policy;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -10,7 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Proiect.Data;
 using Proiect.Models;
 
-namespace Proiect.Pages.Servicii
+namespace Proiect.Pages.Marci
 {
     public class EditModel : PageModel
     {
@@ -22,22 +21,21 @@ namespace Proiect.Pages.Servicii
         }
 
         [BindProperty]
-        public Serviciu Serviciu { get; set; } = default!;
+        public Marca Marca { get; set; } = default!;
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Serviciu == null)
+            if (id == null || _context.Marca == null)
             {
                 return NotFound();
             }
 
-            var serviciu =  await _context.Serviciu.FirstOrDefaultAsync(m => m.ID == id);
-            if (serviciu == null)
+            var marca =  await _context.Marca.FirstOrDefaultAsync(m => m.ID == id);
+            if (marca == null)
             {
                 return NotFound();
             }
-            Serviciu = serviciu;
-            ViewData["MarcaID"] = new SelectList(_context.Set<Marca>(), "ID", "NumeMarca");
+            Marca = marca;
             return Page();
         }
 
@@ -50,7 +48,7 @@ namespace Proiect.Pages.Servicii
                 return Page();
             }
 
-            _context.Attach(Serviciu).State = EntityState.Modified;
+            _context.Attach(Marca).State = EntityState.Modified;
 
             try
             {
@@ -58,7 +56,7 @@ namespace Proiect.Pages.Servicii
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!ServiciuExists(Serviciu.ID))
+                if (!MarcaExists(Marca.ID))
                 {
                     return NotFound();
                 }
@@ -71,9 +69,9 @@ namespace Proiect.Pages.Servicii
             return RedirectToPage("./Index");
         }
 
-        private bool ServiciuExists(int id)
+        private bool MarcaExists(int id)
         {
-          return _context.Serviciu.Any(e => e.ID == id);
+          return _context.Marca.Any(e => e.ID == id);
         }
     }
 }
