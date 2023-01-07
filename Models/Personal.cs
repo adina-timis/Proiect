@@ -10,7 +10,7 @@ namespace Proiect.Models
         public string Prenume { get; set; }
 
         [Display(Name = "Nume")]
-        public string FullName
+        public string? FullName
         {
             get
             {

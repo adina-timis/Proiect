@@ -14,22 +14,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Serviciu[0].NumeMarca)
+                @Html.DisplayNameFor(model => model.Marca[0].NumeMarca)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Serviciu[0].CategoriiServicii)
-            </th>
+           
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.ServiciuD.Servicii) {
-            string selectedRow = "";
-            if (item.ID == Model.ServiciuID)
-            {
-                selectedRow = "table-success";
-            }
-            <tr class="@selectedRow">
+@foreach (var item in Model.Marca) {
+            
+            <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.NumeMarca)
             </td>

@@ -29,7 +29,7 @@
                 @Html.DisplayNameFor(model => model.Serviciu[0].Marca.NumeMarca)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Serviciu[0].Categorii)
+                @Html.DisplayNameFor(model => model.Serviciu[0].CategoriiServicii)
             </th>
 
 
@@ -61,7 +61,7 @@
                 </td>
                 <td>
                     @{
-                        foreach (var category in item.CategoriiServicii)
+                        foreach (var categorie in item.CategoriiServicii)
                         {
                                 @categorie.Categorie.ID @: @categorie.Categorie.NumeCategorie <br />
                         }

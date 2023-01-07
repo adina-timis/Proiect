@@ -47,11 +47,7 @@ namespace Proiect.Pages.Servicii
 
             PopulateAssignedCategoryData(_context, Serviciu);
 
-            var personalList = _context.Personal.Select(x => new
-            {
-                x.ID,
-                FulName = x.Nume + " " + x.Prenume
-            });
+            
             
             ViewData["MarcaID"] = new SelectList(_context.Set<Marca>(), "ID", "NumeMarca");
             return Page();

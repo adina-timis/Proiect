@@ -46,7 +46,7 @@
  <tr>
  @{
  int cnt = 0;
- foreach (var cat in Model..AssignedCategoryDataList)
+ foreach (var cat in Model.AssignedCategoryDataList)
 {
  if (cnt++ % 3 == 0)
 {
@@ -56,7 +56,7 @@
  <input type="checkbox"
  name="selectedCategorii"
  value="@cat.CategorieID"
- @(Html.Raw(cat.Alege ?
+ @(Html.Raw(cat.Assigned ?
 "checked=\"checked\"" : "")) />
  @cat.CategorieID @: @cat.Nume
  @:</td>
