@@ -65,8 +65,7 @@ namespace Proiect.Pages.Servicii
             return RedirectToPage("./Index");
         }
 
-        //PopulateAssignedCategoryData((_context, newServiciu));
-       //return Page();
+        
     }
 } 
 

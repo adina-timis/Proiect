@@ -20,5 +20,6 @@ namespace Proiect.Data
 
         public DbSet<Proiect.Models.Categorie> Categorie { get; set; }
         public IEnumerable<object> Personal { get; internal set; }
+        public DbSet<Proiect.Models.Personal> Personal_1 { get; set; }
     }
 }

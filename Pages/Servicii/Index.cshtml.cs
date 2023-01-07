@@ -30,7 +30,7 @@ namespace Proiect.Pages.Servicii
             {
                 ServiciuD.Servicii = await _context.Serviciu
             .Include(s => s.Marca)
-             .Include(s => s.Personal)
+            .Include(s => s.Personal)
             .Include(s => s.CategoriiServicii)
             .ThenInclude(s => s.Categorie)
             .AsNoTracking()
