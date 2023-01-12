@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Policy;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -19,14 +20,27 @@ namespace Proiect.Pages.Marci
             _context = context;
         }
 
-        public IList<Marca> Marca { get;set; } = default!;
+        public IList<Marca> Marca { get; set; } = default!;
 
-        public async Task OnGetAsync()
+        public MarcaIndexData MarcaData { get; set; }
+        public int MarcaID { get; set; }
+        public int ServiciuID { get; set; }
+        public async Task OnGetAsync(int? id, int? bookID)
         {
-            if (_context.Marca != null)
+            MarcaData = new MarcaIndexData();
+            MarcaData.Marci = await _context.Marca
+            .Include(i => i.Servicii)
+            
+            .OrderBy(i => i.NumeMarca)
+            .ToListAsync();
+            if (id != null)
             {
-                Marca = await _context.Marca.ToListAsync();
+                MarcaID = id.Value;
+                Marca marca = MarcaData.Marci
+                .Where(i => i.ID == id.Value).Single();
+                MarcaData.Marci = (IEnumerable<Marca>)marca.Servicii;
             }
+
         }
     }
 }

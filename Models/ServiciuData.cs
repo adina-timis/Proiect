@@ -7,6 +7,7 @@ namespace Proiect.Models
         public IEnumerable<Serviciu> Servicii { get; set; }
         public IEnumerable<Categorie> Categorii { get; set; }
         public IEnumerable<CategorieServiciu> CategoriiServicii { get; set; }
+       
 
     }
 }

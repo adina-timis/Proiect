@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using Proiect.Data;
 using Proiect.Models;
 
+
 namespace Proiect.Pages.Personalul
 {
     public class IndexModel : PageModel
@@ -19,7 +20,8 @@ namespace Proiect.Pages.Personalul
             _context = context;
         }
 
-        public IList<Personal> Personal { get;set; } = default!;
+        public IList<Personal> Personal { get; set; } = default!;
+
 
         public async Task OnGetAsync()
         {

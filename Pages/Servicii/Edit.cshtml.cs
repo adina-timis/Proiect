@@ -23,14 +23,14 @@ namespace Proiect.Pages.Servicii
         }
 
         [BindProperty]
-        public Serviciu Serviciu { get; set; } 
+        public Serviciu Serviciu { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
             if (id == null || _context.Serviciu == null)
             {
                 return NotFound();
-            }
+            } 
 
             Serviciu = await _context.Serviciu
  .Include(b => b.Marca)

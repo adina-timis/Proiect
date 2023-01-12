@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "/"
 @model Proiect.Pages.Servicii.IndexModel
 
 @{
@@ -10,14 +10,30 @@
 <p>
     <a asp-page="Create">Create New</a>
 </p>
+
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Gaseste dupa Tip Serviciu sau Nume Personal:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Cauta" class="btn btn-primary" /> |
+            <a asp-page="./Index">Inapoi la lista</a>
+        </p>
+    </div>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.TipSort">
                 @Html.DisplayNameFor(model => model.Serviciu[0].Tip)
+                </a>
             </th>
             <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.PersonalSort">
                 @Html.DisplayNameFor(model => model.Serviciu[0].Personal)
+                </a>
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Serviciu[0].Pret)
