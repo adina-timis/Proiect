@@ -24,12 +24,12 @@ namespace Proiect.Pages.Personalul
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Personal_1 == null)
+            if (id == null || _context.Personalul == null)
             {
                 return NotFound();
             }
 
-            var personal = await _context.Personal_1.FirstOrDefaultAsync(m => m.ID == id);
+            var personal = await _context.Personalul.FirstOrDefaultAsync(m => m.ID == id);
 
             if (personal == null)
             {
@@ -44,16 +44,16 @@ namespace Proiect.Pages.Personalul
 
         public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (id == null || _context.Personal_1 == null)
+            if (id == null || _context.Personalul == null)
             {
                 return NotFound();
             }
-            var personal = await _context.Personal_1.FindAsync(id);
+            var personal = await _context.Personalul.FindAsync(id);
 
             if (personal != null)
             {
                 Personal = personal;
-                _context.Personal_1.Remove(Personal);
+                _context.Personalul.Remove(Personal);
                 await _context.SaveChangesAsync();
             }
 

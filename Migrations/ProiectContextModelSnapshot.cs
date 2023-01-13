@@ -97,7 +97,7 @@ namespace Proiect.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Personal");
+                    b.ToTable("Personalul");
                 });
 
             modelBuilder.Entity("Proiect.Models.Serviciu", b =>

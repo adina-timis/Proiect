@@ -36,7 +36,7 @@ namespace Proiect.Pages.Personalul
                 return Page();
             }
 
-            _context.Personal_1.Add(Personal);
+            _context.Personalul.Add(Personal);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
