@@ -25,12 +25,12 @@ namespace Proiect.Pages.Personalul
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
-            if (id == null || _context.Personalul == null)
+            if (id == null || _context.Personal == null)
             {
                 return NotFound();
             }
 
-            var personal =  await _context.Personalul.FirstOrDefaultAsync(m => m.ID == id);
+            var personal =  await _context.Personal.FirstOrDefaultAsync(m => m.ID == id);
             if (personal == null)
             {
                 return NotFound();
@@ -71,7 +71,7 @@ namespace Proiect.Pages.Personalul
 
         private bool PersonalExists(int id)
         {
-          return _context.Personalul.Any(e => e.ID == id);
+          return _context.Personal.Any(e => e.ID == id);
         }
     }
 }

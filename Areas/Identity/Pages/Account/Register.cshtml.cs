@@ -20,7 +20,7 @@ using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
 using Proiect.Models;
 
-namespace Timis_Adina_Lab2.Areas.Identity.Pages.Account
+namespace Proiect.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {

@@ -25,9 +25,9 @@ namespace Proiect.Pages.Personalul
 
         public async Task OnGetAsync()
         {
-            if (_context.Personalul != null)
+            if (_context.Personal != null)
             {
-                Personal = await _context.Personalul.ToListAsync();
+                Personal = await _context.Personal.ToListAsync();
             }
         }
     }
